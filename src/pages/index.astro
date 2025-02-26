@@ -77,67 +77,78 @@ import Layout from "../layouts/Layout.astro";
 	</div>
 </Layout>
 
-<script>
-	// Load EmailJS from CDN first
-	const emailjsScript = document.createElement('script');
-	emailjsScript.src = 'https://cdn.emailjs.com/dist/email.min.js';
-	emailjsScript.async = true;
-	document.head.appendChild(emailjsScript);
-
-	emailjsScript.onload = function() {
-		// Initialize EmailJS with your public key
-		emailjs.init("vZCxqvwZ1AXGnk8TU");
+<script is:inline>
+	// Load EmailJS library
+	(function() {
+		const script = document.createElement('script');
+		script.src = 'https://cdn.emailjs.com/dist/email.min.js';
+		script.async = true;
 		
-		// Set up the form handler
-		const form = document.getElementById('contact-form');
-		const statusDiv = document.getElementById('form-status');
-		const successMessage = document.getElementById('success-message');
-		const errorMessage = document.getElementById('error-message');
+		script.onload = function() {
+			// TypeScript safe initialization of EmailJS
+			window.emailjs.init("vZCxqvwZ1AXGnk8TU");
+			
+			const form = document.getElementById('contact-form');
+			const statusDiv = document.getElementById('form-status');
+			const successMessage = document.getElementById('success-message');
+			const errorMessage = document.getElementById('error-message');
+			
+			if (form) {
+				form.addEventListener('submit', function(event) {
+					event.preventDefault();
+					
+					// Get the submit button with proper typecasting
+					const submitButton = form.querySelector('input[type="submit"]');
+					const originalButtonText = submitButton ? submitButton.value : 'Submit';
+					
+					if (submitButton) {
+						submitButton.value = 'Sending...';
+						submitButton.disabled = true;
+					}
+					
+					// Handle status display
+					if (statusDiv) statusDiv.classList.remove('hidden');
+					if (successMessage) successMessage.classList.add('hidden');
+					if (errorMessage) errorMessage.classList.add('hidden');
+					
+					// Send the form using EmailJS
+					window.emailjs.sendForm('service_huh7r0d', 'template_rpldw7w', form)
+						.then(function() {
+							// Show success message
+							if (successMessage) successMessage.classList.remove('hidden');
+							// Reset the form
+							form.reset();
+						})
+						.catch(function(error) {
+							// Show error message
+							if (errorMessage) {
+								errorMessage.textContent = 'Error sending message: ' + error.text;
+								errorMessage.classList.remove('hidden');
+							}
+							console.error('EmailJS error:', error);
+						})
+						.finally(function() {
+							// Re-enable submit button
+							if (submitButton) {
+								submitButton.value = originalButtonText;
+								submitButton.disabled = false;
+							}
+						});
+				});
+			}
+		};
 		
-		if (form) {
-			form.addEventListener('submit', function(event) {
-				event.preventDefault();
-				
-				// Disable submit button and show loading state
-				const submitButton = form.querySelector('input[type="submit"]');
-				const originalButtonText = submitButton.value;
-				submitButton.value = 'Sending...';
-				submitButton.disabled = true;
-				
-				// Hide any previous status messages
-				statusDiv.classList.remove('hidden');
-				successMessage.classList.add('hidden');
-				errorMessage.classList.add('hidden');
-				
-				// Send the form using EmailJS with your service ID and template ID
-				emailjs.sendForm('service_huh7r0d', 'template_rpldw7w', this)
-					.then(function() {
-						// Show success message
-						successMessage.classList.remove('hidden');
-						// Reset the form
-						form.reset();
-					})
-					.catch(function(error) {
-						// Show error message
-						errorMessage.textContent = 'Error sending message: ' + error.text;
-						errorMessage.classList.remove('hidden');
-						console.error('EmailJS error:', error);
-					})
-					.finally(function() {
-						// Re-enable submit button
-						submitButton.value = originalButtonText;
-						submitButton.disabled = false;
-					});
-			});
-		}
-	};
-
-	// Handle script loading error
-	emailjsScript.onerror = function() {
-		console.error('Failed to load EmailJS script');
-		const errorDiv = document.createElement('div');
-		errorDiv.className = 'text-red-500 text-center mt-4';
-		errorDiv.textContent = 'Unable to load email service. Please try again later.';
-		document.getElementById('contact-form').appendChild(errorDiv);
-	};
+		script.onerror = function() {
+			console.error('Failed to load EmailJS script');
+			const form = document.getElementById('contact-form');
+			if (form) {
+				const errorDiv = document.createElement('div');
+				errorDiv.className = 'text-red-500 text-center mt-4';
+				errorDiv.textContent = 'Unable to load email service. Please try again later.';
+				form.appendChild(errorDiv);
+			}
+		};
+		
+		document.head.appendChild(script);
+	})();
 </script>
