@@ -40,11 +40,11 @@ export const teamMembers = [
   },
   {
     name: "Manodnya Korishetty",
-    src: "/images/team/unknown.jpg",
+    src: "public/images/team/Manodnya.jpeg",
     title: "Inventory and Procurement Head",
     twitter: null,
     instagram: null,
-    linkedin: null,
+    linkedin: "https://www.linkedin.com/in/manodnya-korishetty-400a48214/",
   },
   {
     name: "Prajwal N",
