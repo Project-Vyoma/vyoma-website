@@ -7,7 +7,7 @@ export const teamMembers = [
     linkedin: "https://www.linkedin.com/in/vihaan-snuhith-015714212/",
   },
   {
-    name: "Likith A Nayaka",
+    name: "Likhit A Nayaka",
     src: "/images/team/Likith.jpg",
     title: "Team Vice Lead & Manufacturing Head",
     twitter: null,
@@ -15,7 +15,7 @@ export const teamMembers = [
     linkedin: "https://www.linkedin.com/in/likhit-a-nayaka-24a487353/",
   },
   {
-    name: "Rahul OM",
+    name: "Rahul O M",
     src: "/images/team/Rahul.jpg",
     title: "Aerodynamics Head",
     twitter: null,
