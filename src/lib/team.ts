@@ -80,7 +80,7 @@ export const teamMembers = [
   },
   {
     name: "Sarvika Raju Chamarthy",
-    src: "/images/team/unknown.webp",
+    src: "/images/team/sarvika.webp",
     title: "Social Media Head",
     twitter: null,
     instagram: null,
