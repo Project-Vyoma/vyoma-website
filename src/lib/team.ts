@@ -39,7 +39,7 @@ export const teamMembers = [
     linkedin: null,
   },
   {
-    name: "Manodnya",
+    name: "Manodnya Korishetty",
     src: "/images/team/unknown.jpg",
     title: "Inventory and Procurement Head",
     twitter: null,
