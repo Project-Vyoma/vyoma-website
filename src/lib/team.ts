@@ -36,7 +36,7 @@ export const teamMembers = [
     title: "Flight Test Head",
     twitter: null,
     instagram: null,
-    linkedin: null,
+    linkedin: "https://www.linkedin.com/in/venkatesh-shenoy-77a978291/",
   },
   {
     name: "Manodnya Korishetty",
