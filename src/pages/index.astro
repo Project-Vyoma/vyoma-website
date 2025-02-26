@@ -7,67 +7,50 @@ import Layout from "../layouts/Layout.astro";
 		id="home"
 		class="relative flex flex-col flex-wrap justify-center items-center text-center overflow-hidden py-4 min-h-screen w-full text-white home"
 	>
-		<!-- <h1
-			style="font-family: Spaceboards"
-			class="font-bold text-7xl text-neutral-200 drop-shadow-[0_5.5px_5.5px_rgba(0,0,0,0.8)]"
-		>
-			TEAM VYOMA
-		</h1> -->
 		<div class="two-images relative max-sm:max-w-sm sm:max-w-screen-sm h-auto">
 			<img class="relative top-0 left-0 w-auto h-auto" src="/images/white_logo.png" alt="White Logo" />
 			<img class="absolute top-0 left-0 w-full h-full superimposed" src="/images/image.png"  alt="Logo" />
 		</div>
 		<h2 class="text-3xl drop-shadow-md">Aeromodelling Club of RVCE</h2>
 
-			<!-- Registration link -->
-	<div class="flex justify-center items-center py-4">
-		<a>
-			Registrations Closed! See you next year ✈️
-		</a>
-	</div>
-	<div class="flex justify-center items-center py-4">
-    	<a 
-       		href="https://www.instagram.com/teamvyomaofficial/" 
-        	class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        	target="_blank" 
-        	rel="noopener noreferrer">
-        	View Results Here!
-    	</a>
-	</div>
+		<!-- Registration info -->
+		<div class="flex justify-center items-center py-4">
+			<p class="text-lg font-bold text-white">Registrations Closed! See you next year ✈️</p>
+		</div>
+
+		<div class="flex justify-center items-center py-4">
+			<a 
+				href="https://www.instagram.com/teamvyomaofficial/" 
+				class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+				target="_blank" 
+				rel="noopener noreferrer">
+				View Results Here!
+			</a>
+		</div>
+
 		<div class="h-32 wave"></div>
 		<div class="h-32 wave wave2"></div>
 		<div class="h-32 wave wave3"></div>
 	</section>
-
-
 
 	<div class="pt-5 pb-5">
 		<div class="container">
 			<div class="row">
 				<div class="section-head col-sm-12" id="service">
 					<h1 class="mt-32">VISION</h1>
-					<p>
-						To foster innovation and creativity in the field of
-						aeromodelling
-					</p>
-
-					<a
-						class="text-[#406E9F] hover:text-vyoma-blue hover:no-underline text-2xl"
-						href="/about">Learn More</a
-					>
+					<p>To foster innovation and creativity in the field of aeromodelling</p>
+					<a class="text-[#406E9F] hover:text-vyoma-blue hover:no-underline text-2xl" href="/about">Learn More</a>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<div
-		class="h-10 text-center items-center bg-[url(../images/newbg2.jpg)] bg-no-repeat bg-contain md:bg-cover bg-fixed bg-center w-full text-white min-h-[35vh] px-5 py-10"
-	>
-	</div>
+	<div class="h-10 text-center items-center bg-[url(../images/newbg2.jpg)] bg-no-repeat bg-contain md:bg-cover bg-fixed bg-center w-full text-white min-h-[35vh] px-5 py-10"></div>
 
 	<section id="contact" class="contact">
-		<h1 class="heading">Get in touch</h1>
+		<h1 class="heading">We'd Love to Hear from You! Get in Touch</h1>
 	</section>
+
 	<div class="contact-in">
 		<div class="contact-map">
 			<iframe
@@ -75,47 +58,86 @@ import Layout from "../layouts/Layout.astro";
 				width="100%"
 				height="450"
 				style="border: 0"
-				allowfullscreen=""
-				loading="lazy"></iframe>
+				allowfullscreen
+				loading="eager"
+			></iframe>
 		</div>
-		<div class="contact-form">
-			<form action="http://localhost:8001/contactme.php" method="POST">
-				<input
-					type="text"
-					name="name"
-					placeholder="Name"
-					class="contact-form-txt"
-					required
-				/>
-				<input
-					type="tel"
-					id="phone"
-					name="phone"
-					pattern="[0-9]{10}"
-					required
-					placeholder="Contact number"
-					maxlength="10"
-					class="contact-form-phone"
-				/>
-				<input
-					type="email"
-					name="email"
-					placeholder="Email"
-					class="contact-form-email"
-					required
-				/>
-				<textarea
-					placeholder="Your Message"
-					name="message"
-					class="contact-form-txtarea"
-					required></textarea>
-				<input
-					type="submit"
-					value="Submit"
-					name="submit"
-					class="contact-form-btn"
-				/>
-			</form>
-		</div>
+
+		<form id="contact-form" class="contact-form">
+			<input type="text" id="name" placeholder="Name" class="contact-form-txt" required name="from_name" />
+			<input type="tel" id="phone" pattern="[0-9]{10}" required placeholder="Contact number" maxlength="10" class="contact-form-phone" name="contact" />
+			<input type="email" id="email" placeholder="Email" class="contact-form-email" required name="email_id" />
+			<textarea placeholder="Your Message" name="message" class="contact-form-txtarea" required></textarea>
+			<input type="submit" value="Submit" name="submit" class="contact-form-btn" />
+			<div id="form-status" class="mt-4 text-center hidden">
+				<p id="success-message" class="text-green-500 font-bold hidden">Message sent successfully!</p>
+				<p id="error-message" class="text-red-500 font-bold hidden">Error sending message. Please try again.</p>
+			</div>
+		</form>
 	</div>
 </Layout>
+
+<script>
+	// Load EmailJS from CDN first
+	const emailjsScript = document.createElement('script');
+	emailjsScript.src = 'https://cdn.emailjs.com/dist/email.min.js';
+	emailjsScript.async = true;
+	document.head.appendChild(emailjsScript);
+
+	emailjsScript.onload = function() {
+		// Initialize EmailJS with your public key
+		emailjs.init("vZCxqvwZ1AXGnk8TU");
+		
+		// Set up the form handler
+		const form = document.getElementById('contact-form');
+		const statusDiv = document.getElementById('form-status');
+		const successMessage = document.getElementById('success-message');
+		const errorMessage = document.getElementById('error-message');
+		
+		if (form) {
+			form.addEventListener('submit', function(event) {
+				event.preventDefault();
+				
+				// Disable submit button and show loading state
+				const submitButton = form.querySelector('input[type="submit"]');
+				const originalButtonText = submitButton.value;
+				submitButton.value = 'Sending...';
+				submitButton.disabled = true;
+				
+				// Hide any previous status messages
+				statusDiv.classList.remove('hidden');
+				successMessage.classList.add('hidden');
+				errorMessage.classList.add('hidden');
+				
+				// Send the form using EmailJS with your service ID and template ID
+				emailjs.sendForm('service_huh7r0d', 'template_rpldw7w', this)
+					.then(function() {
+						// Show success message
+						successMessage.classList.remove('hidden');
+						// Reset the form
+						form.reset();
+					})
+					.catch(function(error) {
+						// Show error message
+						errorMessage.textContent = 'Error sending message: ' + error.text;
+						errorMessage.classList.remove('hidden');
+						console.error('EmailJS error:', error);
+					})
+					.finally(function() {
+						// Re-enable submit button
+						submitButton.value = originalButtonText;
+						submitButton.disabled = false;
+					});
+			});
+		}
+	};
+
+	// Handle script loading error
+	emailjsScript.onerror = function() {
+		console.error('Failed to load EmailJS script');
+		const errorDiv = document.createElement('div');
+		errorDiv.className = 'text-red-500 text-center mt-4';
+		errorDiv.textContent = 'Unable to load email service. Please try again later.';
+		document.getElementById('contact-form').appendChild(errorDiv);
+	};
+</script>
