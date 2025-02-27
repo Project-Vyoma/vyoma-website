@@ -63,4 +63,12 @@ export const galleryImages = [
     src: "/gallery/16.jpg",
     desc: "Example 16",
   },
+  {
+    src: "/gallery/17.png",
+    desc: "Example 17",
+  },
+  {
+    src: "/gallery/18.png",
+    desc: "Example 18",
+  },
 ];
