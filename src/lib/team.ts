@@ -63,7 +63,7 @@ export const teamMembers = [
     linkedin: "https://www.linkedin.com/in/yashsaraogi05/",
   },
   {
-    name: "Kanish",
+    name: "B L Kanish",
     src: "/images/team/Kanish.webp",
     title: "Finance Head",
     twitter: null,
