@@ -1,0 +1,5 @@
+# robots.txt for Vyoma RVCE
+User-agent: *
+Allow: /
+
+Sitemap: https://vyoma.rvce.edu.in/sitemap.xml

@@ -2,16 +2,17 @@
 
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { FloatingDock } from "@/components/ui/floating-dock";
-import { 
-  Home, 
-  Info, 
+import {
+  Home,
+  Info,
   FolderKanban,
-  Image as ImageIcon, 
+  Image as ImageIcon,
   Trophy,
   Handshake,
   Users,
-  Mail 
+  Mail
 } from "lucide-react";
 
 export default function Header() {
@@ -22,7 +23,7 @@ export default function Header() {
     if (href.startsWith("/")) {
       return; // Let Next.js handle the navigation
     }
-    
+
     // Handle anchor links on home page
     e.preventDefault();
     if (pathname === "/") {
@@ -115,10 +116,13 @@ export default function Header() {
 
   const logo = (
     <Link href="/" onClick={handleLogoClick}>
-      <img 
-        src="/images/image.png" 
-        alt="VYOMA Logo" 
+      <Image
+        src="/images/image.png"
+        alt="VYOMA Logo"
+        width={120}
+        height={40}
         className="h-10 w-auto"
+        priority
       />
     </Link>
   );
