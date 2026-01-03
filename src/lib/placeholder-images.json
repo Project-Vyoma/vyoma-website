@@ -1,0 +1,40 @@
+{
+  "placeholderImages": [
+    {
+      "id": "gallery-1",
+      "description": "Aircraft cockpit view",
+      "imageUrl": "https://images.unsplash.com/photo-1750232453488-f6a40815126d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxhaXJjcmFmdCUyMGNvY2twaXR8ZW58MHx8fHwxNzY2MzMwMDkwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "aircraft cockpit"
+    },
+    {
+      "id": "gallery-2",
+      "description": "Aircraft wing detail",
+      "imageUrl": "https://images.unsplash.com/photo-1568389408431-e651dc2cc21d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxhaXJjcmFmdCUyMHdpbmd8ZW58MHx8fHwxNzY2MzMwMDkwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "aircraft wing"
+    },
+    {
+      "id": "gallery-3",
+      "description": "Aircraft engine close-up",
+      "imageUrl": "https://images.unsplash.com/photo-1694160027547-b0696cf1ad45?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxqZXQlMjBlbmdpbmV8ZW58MHx8fHwxNzY2MzMwMDkwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "jet engine"
+    },
+    {
+      "id": "gallery-4",
+      "description": "Aircraft in flight from a distance",
+      "imageUrl": "https://images.unsplash.com/photo-1760974632436-7280fcfeb2a9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxqZXQlMjBmbGlnaHR8ZW58MHx8fHwxNzY2MjQ0NDQ1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "jet flight"
+    },
+    {
+      "id": "gallery-5",
+      "description": "Aircraft landing gear",
+      "imageUrl": "https://images.unsplash.com/photo-1692128236180-8d27c7e0a1d4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxsYW5kaW5nJTIwZ2VhcnxlbnwwfHx8fDE3NjYzMzAwOTB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "landing gear"
+    },
+    {
+      "id": "gallery-6",
+      "description": "Aircraft tail fin",
+      "imageUrl": "https://images.unsplash.com/photo-1671971096552-50d8f6d5180c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhaXJjcmFmdCUyMHRhaWx8ZW58MHx8fHwxNzY2MzMwMDkwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "aircraft tail"
+    }
+  ]
+}
