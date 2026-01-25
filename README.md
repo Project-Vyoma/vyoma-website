@@ -27,7 +27,7 @@ Project Vyoma is the aero-design team of RV College of Engineering, established 
 - **Project Showcase**: Detailed pages for RC Airplanes, VTOL systems, and RC Launcher projects
 - **Team & Achievements**: Comprehensive timeline and history of the project
 - **Gallery**: Visual showcase of aircraft, competitions, and events
-- **Contact Form**: Integrated Firebase backend for form submissions
+- **Contact Form**: Simple integrated form for inquiries
 - **Sponsors & Sponsorship**: Information about sponsors and sponsorship opportunities
 - **Performance Optimized**: Built with Next.js 15 for optimal performance and SEO
 
@@ -51,7 +51,6 @@ Project Vyoma is the aero-design team of RV College of Engineering, established 
 - **Embla Carousel** - Carousel component
 
 ### Backend & Services
-- **Firebase** - Database and backend services
 - **Cloudflare Pages** - Deployment platform
 
 ### Development Tools
@@ -86,19 +85,7 @@ yarn install
 
 ### 3. Environment Variables
 
-Create a `.env.local` file in the root directory and add the following Firebase configuration:
-
-```env
-NEXT_PUBLIC_FIREBASE_API_KEY=your_api_key
-NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_auth_domain
-NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_project_id
-NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your_storage_bucket
-NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
-NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
-
-# Optional: For Firebase Emulator (development)
-NEXT_PUBLIC_USE_FIREBASE_EMULATOR=false
-```
+Create a `.env.local` file in the root directory if you need to add any custom environment variables.
 
 ### 4. Run Development Server
 
@@ -150,7 +137,6 @@ vyoma-website/
 │   │   └── ui/                # UI components
 │   ├── hooks/                 # Custom React hooks
 │   └── lib/                   # Utility libraries
-│       ├── firebase.ts        # Firebase configuration
 │       └── utils.ts           # Utility functions
 ├── public/                    # Static assets
 │   └── images/                # Image assets

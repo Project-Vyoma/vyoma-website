@@ -1,6 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import { db } from "@/lib/firebase";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 export const runtime = 'edge';
 
@@ -26,20 +24,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Save to Firestore
-    const docRef = await addDoc(collection(db, "contactSubmissions"), {
-      name,
-      contact,
-      email,
-      message,
-      timestamp: serverTimestamp(),
-      read: false,
-    });
+    // In a real scenario, you might want to send an email here
+    // or log this to a non-Firebase service.
+    console.log("Contact form submission:", { name, contact, email, message });
 
     return NextResponse.json(
       {
         success: true,
-        id: docRef.id,
         message: "Form submitted successfully",
       },
       { status: 200 }
@@ -52,4 +43,3 @@ export async function POST(request: NextRequest) {
     );
   }
 }
-
