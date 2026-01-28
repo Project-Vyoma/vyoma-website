@@ -82,6 +82,7 @@ storage.rules
 .wrangler.toml
 .dev.vars
 .vercel/output/
+.open-next/
 
 # OS
 .DS_Store

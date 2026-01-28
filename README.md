@@ -3,7 +3,7 @@
 A modern, interactive website showcasing Project Vyoma - an aerospace engineering student project from RV College of Engineering, founded in 2007. The website features stunning animations, scroll-based interactions, and a comprehensive showcase of the team's achievements, projects, and history.
 
 ![Project Vyoma](https://img.shields.io/badge/Project-Vyoma-blue)
-![Next.js](https://img.shields.io/badge/Next.js-15.5.9-black)
+![Next.js](https://img.shields.io/badge/Next.js-15.5.10-black)
 ![React](https://img.shields.io/badge/React-19.2.1-blue)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)
 
@@ -34,7 +34,7 @@ Project Vyoma is the aero-design team of RV College of Engineering, established 
 ## 🛠️ Tech Stack
 
 ### Core Framework
-- **Next.js 15.5.9** - React framework with App Router
+- **Next.js 15.5.10** - React framework with App Router
 - **React 19.2.1** - UI library
 - **TypeScript 5** - Type safety
 
@@ -51,7 +51,7 @@ Project Vyoma is the aero-design team of RV College of Engineering, established 
 - **Embla Carousel** - Carousel component
 
 ### Backend & Services
-- **Cloudflare Pages** - Deployment platform
+- **Cloudflare Workers (via @opennextjs/cloudflare)** - Deployment platform
 
 ### Development Tools
 - **Genkit** - AI development tools
@@ -100,12 +100,15 @@ The website will be available at [http://localhost:9002](http://localhost:9002)
 ## 📜 Available Scripts
 
 - `npm run dev` - Start development server with Turbopack on port 9002
-- `npm run build` - Build the application for production
-- `npm run build:cloudflare` - Build for Cloudflare Pages deployment
-- `npm run start` - Start production server
+- `npm run build` - Standard Next.js production build
+- `npm run build:cloudflare` - Build the app using the `@opennextjs/cloudflare` adapter
+- `npm run preview` - Build and preview locally on the Cloudflare Workers runtime
+- `npm run deploy` - Build and deploy to Cloudflare Workers using OpenNext
+- `npm run upload` - Build and upload a new version to Cloudflare (for gradual deployments)
+- `npm run cf-typegen` - Generate `cloudflare-env.d.ts` types for Wrangler bindings
+- `npm run start` - Start the Next.js production server (Node)
 - `npm run lint` - Run ESLint
 - `npm run typecheck` - Run TypeScript type checking
-- `npm run deploy` - Deploy to Cloudflare Pages
 - `npm run genkit:dev` - Start Genkit development server
 - `npm run genkit:watch` - Start Genkit with watch mode
 
@@ -166,18 +169,31 @@ The website uses multiple animation libraries to create smooth, engaging interac
 
 ## 🚢 Deployment
 
-### Cloudflare Pages
+### Cloudflare Workers (via OpenNext)
 
-The project is configured for deployment on Cloudflare Pages:
+The project is configured to deploy using the official `@opennextjs/cloudflare` adapter:
 
 ```bash
 npm run deploy
 ```
 
 This will:
-1. Build the Next.js application
-2. Convert it for Cloudflare Pages compatibility
-3. Deploy using Wrangler
+1. Run the standard `next build`
+2. Transform the build using `opennextjs-cloudflare build`
+3. Deploy the Worker and static assets to Cloudflare via Wrangler
+
+#### Requirements
+
+- A Cloudflare account and Workers project
+- Wrangler CLI authenticated (`npx wrangler login`)
+
+#### Local preview on the Workers runtime
+
+```bash
+npm run preview
+```
+
+This builds the app and serves it locally using the same runtime as production (Cloudflare Workers).
 
 ### Other Platforms
 

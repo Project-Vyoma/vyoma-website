@@ -31,3 +31,8 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+
+// Enables better local dev parity with Cloudflare Workers when using OpenNext.
+// Safe to call unconditionally.
+import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
+initOpenNextCloudflareForDev();
