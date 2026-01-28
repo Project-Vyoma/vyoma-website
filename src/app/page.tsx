@@ -32,37 +32,22 @@ export default function Home() {
     let loadedCount = 0;
     const imgElements: HTMLImageElement[] = [];
 
-    const handleFrameLoadedOrFailed = () => {
-      loadedCount++;
-      setLoadingProgress((loadedCount / frameCount) * 100);
-      if (loadedCount === frameCount) {
-        imagesRef.current = imgElements;
-        // Short delay to allow the loading bar to hit 100%
-        setTimeout(() => setIsLoaded(true), 200);
-        // Fade in content
-        setTimeout(() => setIsReady(true), 700);
-      }
-    };
-
     for (let i = 0; i < frameCount; i++) {
       const img = new Image();
       img.src = getFrameUrl(i);
       imgElements.push(img);
-      img.onload = handleFrameLoadedOrFailed;
-      img.onerror = handleFrameLoadedOrFailed;
+      img.onload = () => {
+        loadedCount++;
+        setLoadingProgress((loadedCount / frameCount) * 100);
+        if (loadedCount === frameCount) {
+          imagesRef.current = imgElements;
+          // Short delay to allow the loading bar to hit 100%
+          setTimeout(() => setIsLoaded(true), 200);
+          // Fade in content
+          setTimeout(() => setIsReady(true), 700);
+        }
+      };
     }
-
-    // Safety timeout: if frames never finish loading, still show the site
-    const timeoutId = window.setTimeout(() => {
-      if (!isLoaded) {
-        setIsLoaded(true);
-        setIsReady(true);
-      }
-    }, 8000);
-
-    return () => {
-      window.clearTimeout(timeoutId);
-    };
   }, []);
 
   useEffect(() => {
