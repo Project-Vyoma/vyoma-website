@@ -2,6 +2,9 @@ import type { Metadata, Viewport } from "next";
 import { Toaster } from "@/components/ui/toaster";
 import "./globals.css";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://vyoma.rvce.edu.in";
+const siteImage = "/images/image.png";
+
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
@@ -9,7 +12,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://vyoma.rvce.edu.in'),
+  metadataBase: new URL(siteUrl),
   title: {
     default: "Vyoma RVCE - Aeromodelling Club",
     template: "%s | Vyoma RVCE"
@@ -20,20 +23,20 @@ export const metadata: Metadata = {
   creator: "Vyoma RVCE",
   publisher: "Vyoma RVCE",
   icons: {
-    icon: '/icon.png',
-    shortcut: '/icon.png',
-    apple: '/icon.png',
+    icon: siteImage,
+    shortcut: siteImage,
+    apple: siteImage,
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://vyoma.rvce.edu.in",
+    url: siteUrl,
     title: "Vyoma RVCE - Aeromodelling Club",
     description: "Pioneering excellence in aerospace engineering since 2007. Building innovative aircraft and inspiring future engineers.",
     siteName: "Vyoma RVCE",
     images: [
       {
-        url: "/icon.png",
+        url: siteImage,
         width: 1200,
         height: 630,
         alt: "Vyoma RVCE Aeromodelling Club",
@@ -44,7 +47,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Vyoma RVCE - Aeromodelling Club",
     description: "Pioneering excellence in aerospace engineering since 2007.",
-    images: ["/icon.png"],
+    images: [siteImage],
   },
   robots: {
     index: true,
@@ -67,9 +70,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" suppressHydrationWarning data-scroll-behavior="smooth">
       <head>
-        <link rel="icon" type="image/png" href="/icon.png" />
-        <link rel="shortcut icon" type="image/png" href="/icon.png" />
-        <link rel="apple-touch-icon" href="/icon.png" />
+        <link rel="icon" type="image/png" href={siteImage} />
+        <link rel="shortcut icon" type="image/png" href={siteImage} />
+        <link rel="apple-touch-icon" href={siteImage} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet" />
